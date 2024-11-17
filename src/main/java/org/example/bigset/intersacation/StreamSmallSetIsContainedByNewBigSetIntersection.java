@@ -10,9 +10,13 @@ public class StreamSmallSetIsContainedByNewBigSetIntersection {
     public static <T> Set<T> getIntersection(Set<T> set1, Set<T> set2) {
         Set<T> smallerSet = set1.size() < set2.size() ? new HashSet<>(set1) : new HashSet<>(set2);
         Set<T> largerSet = set1.size() < set2.size() ? set2 : set1;
-        return smallerSet.stream()
+        var intersection = smallerSet.stream()
                 .filter(largerSet::contains)
                 .collect(Collectors.toSet());
+
+        int size = intersection.size();
+
+        return intersection;
     }
 
 }

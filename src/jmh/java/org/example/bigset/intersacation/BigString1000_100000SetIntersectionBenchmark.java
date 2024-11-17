@@ -18,12 +18,12 @@ import java.util.concurrent.TimeUnit;
  * | Benchmark                                                  |  Average  | Execution Time     |
  * |                                                           |  Rounds   |  (ms per operation) |
  * +-------------------------------------------------------------+-----------+---------------------+
- * | guavaSetsIntersection                                      |   5       | ≈ 10⁻⁵ ms/op       |
- * | loopBigSetIsContainedByNewSmallSet                         |   5       |  0.084 ±  0.001 ms |
+ * | guavaSetsIntersection                                      |   5       |  0.041 ±  0.001 ms |
+ * | loopBigSetIsContainedByNewSmallSet                         |   5       |  0.084 ±  0.004 ms |
  * | loopBigSetIsContainedBySmallSet                            |   5       |  0.046 ±  0.001 ms |
  * | smallSetRetainAllBigSet                                    |   5       |  0.085 ±  0.001 ms |
  * | streamSmallSetIsContainedByBigSet                          |   5       |  0.048 ±  0.001 ms |
- * | streamSmallSetIsContainedByNewBigSet                       |   5       |  0.086 ±  0.003 ms |
+ * | streamSmallSetIsContainedByNewBigSet                       |   5       |  0.087 ±  0.003 ms |
  * +-------------------------------------------------------------+-----------+---------------------+
  * </pre>
  *
@@ -48,7 +48,7 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-public class BigStringSetIntersectionBenchmark {
+public class BigString1000_100000SetIntersectionBenchmark {
 
     @State(Scope.Benchmark)
     public static class BenchmarkState {
@@ -59,11 +59,11 @@ public class BigStringSetIntersectionBenchmark {
         public void setup() {
             baseSet = new HashSet<>();
             filterSet = new HashSet<>();
-            for (int i = 0; i < 10000; i++) {
+            for (int i = 0; i < 100000; i++) {
                 String uuid = UUID.randomUUID().toString();
-                baseSet.add(uuid);
-                filterSet.add(UUID.randomUUID().toString());
-                if (i % 8 == 0) filterSet.add(uuid);
+                filterSet.add(uuid);
+                if (i % 100 == 0) baseSet.add(uuid);
+                if (i % 1000 == 0) baseSet.add(UUID.randomUUID().toString());
             }
         }
     }
@@ -81,6 +81,11 @@ public class BigStringSetIntersectionBenchmark {
     @Benchmark
     public void smallSetRetainAllBigSet(Blackhole bh, BigIntegerSetIntersectionBenchmark.BenchmarkState state) {
         bh.consume(SmallSetRetainAllBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
+    }
+
+    @Benchmark
+    public void newSmallSetRetainAllBigSet(Blackhole bh, BigIntegerSetIntersectionBenchmark.BenchmarkState state) {
+        bh.consume(NewSmallSetRetainAllBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
     }
 
     @Benchmark

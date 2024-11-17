@@ -1,9 +1,10 @@
 package org.example.bigset.intersacation;
 
+import java.util.HashSet;
 import java.util.Set;
 
-// provided by chatGPT (4o), modified by me
-public class SmallSetRetainAllBigSetIntersection {
+// provided by chatGPT (4o)
+public class NewSmallSetRetainAllBigSetIntersection {
 
     public static <T> Set<T> getIntersection(Set<T> set1, Set<T> set2) {
         // Determine the smaller set to optimize performance
@@ -11,11 +12,12 @@ public class SmallSetRetainAllBigSetIntersection {
         Set<T> largerSet = set1.size() < set2.size() ? set2 : set1;
 
         // Create a new set to store the intersection
-        smallerSet.retainAll(largerSet);
+        Set<T> intersection = new HashSet<>(smallerSet);
+        intersection.retainAll(largerSet);
 
-        int size = smallerSet.size();
+        int size = intersection.size();
 
-        return smallerSet;
+        return intersection;
     }
 
 }

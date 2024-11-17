@@ -69,34 +69,34 @@ public class BigIntegerSetIntersectionBenchmark {
         }
     }
 
-    @Benchmark
-    public void loopBigSetIsContainedBySmallSet(Blackhole bh, BenchmarkState state) {
-        bh.consume(LoopBigSetIsContainedBySmallSetIntersection.getIntersection(state.baseSet, state.filterSet));
-    }
-
-    @Benchmark
-    public void loopBigSetIsContainedByNewSmallSet(Blackhole bh, BenchmarkState state) {
-        bh.consume(LoopBigSetIsContainedByNewSmallSetIntersection.getIntersection(state.baseSet, state.filterSet));
-    }
-
-    @Benchmark
-    public void smallSetRetainAllBigSet(Blackhole bh, BenchmarkState state) {
-        bh.consume(SmallSetRetainAllBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
-    }
-
-    @Benchmark
-    public void streamSmallSetIsContainedByBigSet(Blackhole bh, BenchmarkState state) {
-        bh.consume(StreamSmallSetIsContainedByBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
-    }
-
-    @Benchmark
-    public void streamSmallSetIsContainedByNewBigSet(Blackhole bh, BenchmarkState state) {
-        bh.consume(StreamSmallSetIsContainedByNewBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
-    }
-
-    @Benchmark
-    public void guavaSetsIntersection(Blackhole bh, BenchmarkState state) {
-        bh.consume(GuavaSetsIntersection.getIntersection(state.baseSet, state.filterSet));
-    }
+//    @Benchmark
+//    public void loopBigSetIsContainedBySmallSet(Blackhole bh, BenchmarkState state) {
+//        bh.consume(LoopBigSetIsContainedBySmallSetIntersection.getIntersection(state.baseSet, state.filterSet));
+//    }
+//
+//    @Benchmark
+//    public void loopBigSetIsContainedByNewSmallSet(Blackhole bh, BenchmarkState state) {
+//        bh.consume(LoopBigSetIsContainedByNewSmallSetIntersection.getIntersection(state.baseSet, state.filterSet));
+//    }
+//
+//    @Benchmark
+//    public void smallSetRetainAllBigSet(Blackhole bh, BenchmarkState state) {
+//        bh.consume(SmallSetRetainAllBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
+//    }
+//
+//    @Benchmark
+//    public void streamSmallSetIsContainedByBigSet(Blackhole bh, BenchmarkState state) {
+//        bh.consume(StreamSmallSetIsContainedByBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
+//    }
+//
+//    @Benchmark
+//    public void streamSmallSetIsContainedByNewBigSet(Blackhole bh, BenchmarkState state) {
+//        bh.consume(StreamSmallSetIsContainedByNewBigSetIntersection.getIntersection(state.baseSet, state.filterSet));
+//    }
+//
+//    @Benchmark
+//    public void guavaSetsIntersection(Blackhole bh, BenchmarkState state) {
+//        bh.consume(GuavaSetsIntersection.getIntersection(state.baseSet, state.filterSet));
+//    }
 
 }

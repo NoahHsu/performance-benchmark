@@ -8,11 +8,16 @@ import java.util.Set;
 public class GuavaSetsIntersection {
 
     public static <T> Set<T> getIntersection(Set<T> set1, Set<T> set2) {
+        Set<T> answer;
         if (set1.size() <= set2.size()) {
-            return Sets.intersection(set1, set2);
+            answer =  Sets.intersection(set1, set2);
         } else {
-            return Sets.intersection(set2, set1);
+            answer = Sets.intersection(set2, set1);
         }
+
+        int size = answer.size();
+
+        return answer;
     }
 
 }

@@ -3,7 +3,7 @@ package org.example.bigset.intersacation;
 import java.util.HashSet;
 import java.util.Set;
 
-// provided by Gemini (1.5 Flash)
+// provided by Gemini (1.5 Flash) original
 public class LoopBigSetIsContainedByNewSmallSetIntersection {
 
     public static <T> Set<T> getIntersection(Set<T> set1, Set<T> set2) {
@@ -16,6 +16,7 @@ public class LoopBigSetIsContainedByNewSmallSetIntersection {
                 intersection.add(element);
             }
         }
+        int size = intersection.size();
 
         return intersection;
     }
